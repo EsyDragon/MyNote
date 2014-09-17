@@ -1,5 +1,9 @@
-MyNote
+编程笔记和算法总结
 ======
-The is Some notebooks for my program
-There are some algorithm for physics
+这里是一些关于计算机和物理学的笔记
+There are Some notebooks
+
+##索引
+
+-Mathematica常用算法
 
