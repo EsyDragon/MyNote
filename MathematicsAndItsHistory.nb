@@ -1,0 +1,295 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10356,        286]
+NotebookOptionsPosition[      9549,        253]
+NotebookOutlinePosition[      9903,        269]
+CellTagsIndexPosition[      9860,        266]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\[Section]1\t\:6bd5\:8fbe\:54e5\:62c9\:65af\:5b9a\:7406", "Chapter",
+ CellChangeTimes->{{3.620962037977716*^9, 3.620962061930438*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["\:6ee1\:8db3a", "2"], "+", 
+   SuperscriptBox["b", "2"]}], "==", 
+  RowBox[{
+   SuperscriptBox["c", "2"], "\:7684", 
+   RowBox[{"(", 
+    RowBox[{"a", ",", "b", ",", "c"}], ")"}], 
+   RowBox[{
+   "\:79f0\:4e3a\:6bd5\:8fbe\:54e5\:62c9\:65af\:4e09\:5143\:6570", 
+    "."}]}]}]], "Text",
+ CellChangeTimes->{{3.620962130615615*^9, 3.6209621986757927`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"EdgeForm", "[", "Black", "]"}], ",", "White", ",", 
+     RowBox[{"Triangle", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "3"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"4", ",", "0"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.620962263615705*^9, 3.6209623232965508`*^9}, {
+  3.620962443404258*^9, 3.620962447779428*^9}, {3.620962704147985*^9, 
+  3.6209627262792397`*^9}, {3.620962761456456*^9, 3.620962788377845*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+   TagBox[PolygonBox[{{0, 0}, {0, 3}, {4, 0}}],
+    "Triangle"]},
+  Axes->True]], "Output",
+ CellChangeTimes->{{3.620962299371648*^9, 3.620962323934156*^9}, 
+   3.62096244846273*^9, {3.620962712159143*^9, 3.620962727547121*^9}, {
+   3.620962769565633*^9, 3.62096278897552*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{"\:751f\:6210\:6bd5\:8fbe\:54e5\:62c9\:65af\:4e09\:5143\:6570\
+\:7684\:4e00\:822c\:516c\:5f0f\:662f", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["p", "2"], "-", 
+      SuperscriptBox["q", "2"]}], ")"}], "r"}]}], ",", 
+  RowBox[{"b", "=", 
+   RowBox[{"2", "p", " ", "q", " ", "r"}]}], ",", 
+  RowBox[{"c", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["p", "2"], "+", 
+      SuperscriptBox["q", "2"]}], ")"}], "r"}]}]}]}], "Text",
+ CellChangeTimes->{{3.620962875013659*^9, 3.620962962282468*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"\:4e60\:98981", "~", "3"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "119", ",", "3367", ",", "4601", ",", "12709", ",", "65", ",", "319", 
+       ",", "2291", ",", "799", ",", "481", ",", "4961", ",", "45", ",", 
+       "1679", ",", "161", ",", "1771", ",", "56"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "169", ",", "4825", ",", "6649", ",", "18541", ",", "97", ",", "481", 
+       ",", "3541", ",", "1249", ",", "769", ",", "8161", ",", "75", ",", 
+       "2929", ",", "289", ",", "3229", ",", "106"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"b", "=", 
+    SqrtBox[
+     RowBox[{
+      SuperscriptBox["c", "2"], "-", 
+      SuperscriptBox["a", "2"]}]]}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<In list b which can't be divised by 60 are \>\"", ",", 
+     RowBox[{"Select", "[", 
+      RowBox[{"b", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Divisible", "[", 
+          RowBox[{"#", ",", "60"}], "]"}], "\[Equal]", "False"}], "&"}]}], 
+      "]"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<In list b which can't be divised by 30 are \>\"", ",", 
+     RowBox[{"Select", "[", 
+      RowBox[{"b", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Divisible", "[", 
+          RowBox[{"#", ",", "30"}], "]"}], "\[Equal]", "False"}], "&"}]}], 
+      "]"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<In list b which can't be divised by 12 are \>\"", ",", 
+     RowBox[{"Select", "[", 
+      RowBox[{"b", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Divisible", "[", 
+          RowBox[{"#", ",", "12"}], "]"}], "\[Equal]", "False"}], "&"}]}], 
+      "]"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       SuperscriptBox["1", "2"], ",", "4"}], "]"}], ",", "\"\< \>\"", ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       SuperscriptBox["2", "2"], ",", "4"}], "]"}], ",", "\"\< \>\"", ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       SuperscriptBox["3", "2"], ",", "4"}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6209630452579536`*^9, 3.6209632407565317`*^9}, {
+   3.6209633283956537`*^9, 3.620963371667341*^9}, {3.620963402109097*^9, 
+   3.620963412788208*^9}, 3.620963444111211*^9, {3.6209634931953573`*^9, 
+   3.620963498177698*^9}, {3.6209637727985497`*^9, 3.6209638820854588`*^9}, {
+   3.6209639321779003`*^9, 3.6209639606240273`*^9}, 3.620964006308485*^9, {
+   3.6209640601197023`*^9, 3.620964156731003*^9}, {3.6209642403702602`*^9, 
+   3.620964278615508*^9}, {3.620964312380142*^9, 3.620964313272128*^9}, {
+   3.620964370834599*^9, 3.62096440737729*^9}, 3.6209645051931877`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "120", ",", "3456", ",", "4800", ",", "13500", ",", "72", ",", "360", ",", 
+   "2700", ",", "960", ",", "600", ",", "6480", ",", "60", ",", "2400", ",", 
+   "240", ",", "2700", ",", "90"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.620963859443016*^9, 3.620963961225667*^9, 3.620964007425332*^9, {
+   3.620964060723585*^9, 3.6209640964712667`*^9}, {3.620964130042609*^9, 
+   3.620964157228836*^9}, 3.620964279170121*^9, 3.620964314091557*^9, {
+   3.6209643932424726`*^9, 3.620964408217268*^9}, 3.620964508133428*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"In list b which can't be divised by 60 are \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"3456", ",", "72", ",", "90"}], "}"}]}],
+  SequenceForm["In list b which can't be divised by 60 are ", {3456, 72, 90}],
+  
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.620963855298238*^9, 3.620963859445662*^9}, 
+   3.6209639612289762`*^9, 3.6209640074279327`*^9, {3.62096406072773*^9, 
+   3.620964096473648*^9}, {3.6209641300462017`*^9, 3.620964157231464*^9}, 
+   3.620964279172758*^9, 3.6209643140943937`*^9, {3.620964393246153*^9, 
+   3.620964408220024*^9}, 3.6209645081358643`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"In list b which can't be divised by 30 are \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"3456", ",", "72"}], "}"}]}],
+  SequenceForm["In list b which can't be divised by 30 are ", {3456, 72}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.620963855298238*^9, 3.620963859445662*^9}, 
+   3.6209639612289762`*^9, 3.6209640074279327`*^9, {3.62096406072773*^9, 
+   3.620964096473648*^9}, {3.6209641300462017`*^9, 3.620964157231464*^9}, 
+   3.620964279172758*^9, 3.6209643140943937`*^9, {3.620964393246153*^9, 
+   3.620964408220024*^9}, 3.620964508137207*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"In list b which can't be divised by 12 are \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", "90", "}"}]}],
+  SequenceForm["In list b which can't be divised by 12 are ", {90}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.620963855298238*^9, 3.620963859445662*^9}, 
+   3.6209639612289762`*^9, 3.6209640074279327`*^9, {3.62096406072773*^9, 
+   3.620964096473648*^9}, {3.6209641300462017`*^9, 3.620964157231464*^9}, 
+   3.620964279172758*^9, 3.6209643140943937`*^9, {3.620964393246153*^9, 
+   3.620964408220024*^9}, 3.620964508140018*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "1", "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" \"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm[1, " ", 0, " ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.620963855298238*^9, 3.620963859445662*^9}, 
+   3.6209639612289762`*^9, 3.6209640074279327`*^9, {3.62096406072773*^9, 
+   3.620964096473648*^9}, {3.6209641300462017`*^9, 3.620964157231464*^9}, 
+   3.620964279172758*^9, 3.6209643140943937`*^9, {3.620964393246153*^9, 
+   3.620964408220024*^9}, 3.620964508141347*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+(*\:4e60\:98984*)
+\:5982\:679ca, b\:540c\:65f6\:4e3a\:5947\:6570, \:5219c\:4e3a\:5076\:6570.\
+\:53c8\:7531\:4e8ec\:4e3a\:5076\:6570, \:4e14c\:4e3a\:5b8c\:5168\:5e73\:65b9\
+\:6570, \:5219c\:53ef\:4ee5\:88ab4\:6574\:9664.\:4f46\:5947\:6570\:7684\:5e73\
+\:65b9Mod4\:4ec5\:4f591, \
+\:4e24\:5947\:6570\:5e73\:65b9\:4e4b\:548cMod4\:4f592;\:6545\:6bd5\:8fbe\:54e5\
+\:62c9\:65af\:4e09\:5143\:6570(a,b,c)\:4e2da,b\:4e0d\:80fd\:540c\:65f6\:4e3a\
+\:5947\:6570.\
+\>", "Text",
+ CellChangeTimes->{{3.6209645150670557`*^9, 3.6209645975771303`*^9}, {
+  3.620964644569004*^9, 3.6209647741139393`*^9}}]
+}, Open  ]]
+},
+WindowSize->{808, 583},
+WindowMargins->{{69, Automatic}, {Automatic, 34}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 140, 1, 65, "Chapter"],
+Cell[723, 25, 406, 12, 33, "Text"],
+Cell[CellGroupData[{
+Cell[1154, 41, 719, 18, 28, "Input"],
+Cell[1876, 61, 347, 8, 290, "Output"]
+}, Open  ]],
+Cell[2238, 72, 611, 17, 55, "Text"],
+Cell[CellGroupData[{
+Cell[2874, 93, 3003, 73, 235, "Input"],
+Cell[5880, 168, 558, 10, 28, "Output"],
+Cell[CellGroupData[{
+Cell[6463, 182, 645, 13, 22, "Print"],
+Cell[7111, 197, 625, 12, 22, "Print"],
+Cell[7739, 211, 591, 11, 22, "Print"],
+Cell[8333, 224, 579, 11, 21, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[8939, 239, 594, 11, 68, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
