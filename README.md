@@ -18,3 +18,5 @@
 * 中文模板.tex
   * 在Max OSX系统下的LaTeX模板.(注意请用XeLatex编译,并且确保字体设置为UTF-8)
 
+* 引力论solution
+  * WTA的巨作gravitation的课后练习题解答,可能有误,欢迎质疑~
