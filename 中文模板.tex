@@ -1,7 +1,8 @@
-%!TEX TS-program = xelatex
+
+%!TEX TS-program = xetex
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 \usepackage{geometry}
 \geometry{letterpaper}
 
@@ -13,6 +14,53 @@
 
 \newfontfamily{\H}{STSong}
 \newfontfamily{\E}{Arial}  %设定新的字体快捷命令
+\newcommand{\ud}{\mathrm{d}} %设置\ud为罗马字体的d
+
+\usepackage{amsmath}
+
+\newsavebox{\myhbar}%由于xunicode的\hbar有bug,故重新设置\hbar
+\savebox{\myhbar}{$\hbar$}
+\renewcommand*{\hbar}{\mathalpha{\usebox{\myhbar}}}
+
+\usepackage{xparse}%设置双重指标
+\ExplSyntaxOn
+\NewDocumentCommand{\tensorkor}{ s m O{} }
+ {
+  \IfBooleanTF{#1}
+   { \gabriel_nonstacked:nn { #2 } { #3 } }
+   { \gabriel_stacked:nn { #2 } { #3 } }
+ }
+\cs_new_protected:Npn \gabriel_stacked:nn #1 #2
+ {
+  \mathsf{#1}%
+  \clist_map_inline:nn { #2 }
+   {
+    \vphantom{\mathsf{#1}} ##1
+   }
+ }
+\tl_new:N \l_gabriel_sup_tl
+\tl_new:N \l_gabriel_sub_tl
+\cs_new_protected:Npn \gabriel_nonstacked:nn #1 #2
+ {
+  \tl_clear:N \l_gabriel_sup_tl
+  \tl_clear:N \l_gabriel_sub_tl
+  \clist_map_inline:nn { #2 }
+   {
+    \gabriel_decide:Nn ##1
+   }
+  \mathsf{#1}\sp{\l_gabriel_sup_tl}\sb{\l_gabriel_sub_tl}
+ }
+\cs_new_protected:Npn \gabriel_decide:Nn #1 #2
+ {
+  \token_if_math_superscript:NTF #1
+   {
+    \tl_put_right:Nn \l_gabriel_sup_tl { #2 }
+   }
+   {
+    \tl_put_right:Nn \l_gabriel_sub_tl { #2 }
+   }
+ }
+\ExplSyntaxOff
 
 \title{\H 算法设计}
 \author{Donald}
