@@ -1,0 +1,219 @@
+
+%!TEX TS-program = xetex
+%!TEX encoding = UTF-8 Unicode
+
+
+\documentclass[12pt]{report}
+\usepackage{geometry}
+\geometry{letterpaper}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont{STSong} %设置中文字体
+\XeTeXlinebreaklocale “zh”
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt %文章内中文自动换行
+
+\newfontfamily{\E}{Arial}  %设定新的字体快捷命令
+\newcommand{\ud}{\mathrm{d}} %设置\ud为罗马字体的d
+
+\usepackage{amsmath}
+
+\newsavebox{\myhbar}%由于xunicode的\hbar有bug,故重新设置\hbar
+\savebox{\myhbar}{$\hbar$}
+\renewcommand*{\hbar}{\mathalpha{\usebox{\myhbar}}}
+
+\usepackage{xparse}%设置双重指标
+\ExplSyntaxOn
+\NewDocumentCommand{\tensorkor}{ s m O{} }
+ {
+  \IfBooleanTF{#1}
+   { \gabriel_nonstacked:nn { #2 } { #3 } }
+   { \gabriel_stacked:nn { #2 } { #3 } }
+ }
+\cs_new_protected:Npn \gabriel_stacked:nn #1 #2
+ {
+  \mathsf{#1}%
+  \clist_map_inline:nn { #2 }
+   {
+    \vphantom{\mathsf{#1}} ##1
+   }
+ }
+\tl_new:N \l_gabriel_sup_tl
+\tl_new:N \l_gabriel_sub_tl
+\cs_new_protected:Npn \gabriel_nonstacked:nn #1 #2
+ {
+  \tl_clear:N \l_gabriel_sup_tl
+  \tl_clear:N \l_gabriel_sub_tl
+  \clist_map_inline:nn { #2 }
+   {
+    \gabriel_decide:Nn ##1
+   }
+  \mathsf{#1}\sp{\l_gabriel_sup_tl}\sb{\l_gabriel_sub_tl}
+ }
+\cs_new_protected:Npn \gabriel_decide:Nn #1 #2
+ {
+  \token_if_math_superscript:NTF #1
+   {
+    \tl_put_right:Nn \l_gabriel_sup_tl { #2 }
+   }
+   {
+    \tl_put_right:Nn \l_gabriel_sub_tl { #2 }
+   }
+ }
+\ExplSyntaxOff
+
+
+\title{\H 引力论习题解答}
+\author{EsyDragonOne}
+\date{\E\today}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{空时物理学}
+\section{第一章 几何动力学概要}
+\subsection{圆柱体的曲率}
+试证明圆柱体表面上各短程线(不缠绕!!)无短程线偏差,并由此证明圆柱体表面的Gauss曲率R为零.再利用公式$R=1/\rho_{1}\rho_{2}$独立地证明上述结论,式中的$\rho_{1}$和$\rho_{2}$是题中相对于圆柱所在的三维Euclid空间的主曲率半径.
+
+{\E Solution:}
+
+在圆柱体上考虑不缠绕的短程线即为圆柱的圆截线.而考虑任意两条短程线,将圆柱体沿母线展开得到一矩形,其中圆截线则对应与矩形的边平行的直线.故任意两条不缠绕的短程线均平行,即无短程偏差.
+\begin{displaymath}
+\frac{\ud^{2} \xi}{\ud s^{2}}=0
+\end{displaymath}
+故Gauss曲率为零.
+
+而圆柱在三维Euclid空间中的主曲率$k_{1}=1/a,k_{2}=0$,故其高斯曲率为$R=k_{1}k_{2}=0$.既有
+\begin{displaymath}
+\frac{\ud^{2} \xi}{\ud s^{2}}=0
+\end{displaymath}
+\rightline{证毕}
+
+\newpage
+\subsection{春潮与小潮}
+试用约定单位制以及几何单位制计算
+
+(1)月亮($m_{约定}=7.35\times 10^{25}g$,\quad$r=3.84\times 10^{10}cm$)在地球上产生的Newton潮汐加速度$R^{m}_{\phantom 0n0}$(m,n=1,2,3)之大小.
+
+(2)太阳($m_{约定}=1.989\times 10^{33}g$,\quad$r=1.496\times 10^{13}cm$)在地球上产生的Newton潮汐加速度$R^{m}_{\phantom 0n0}$(m,n=1,2,3)之大小.
+
+(3)估计对春潮所得之结果应超过小潮多少倍.
+
+{\E Solution:}
+
+考虑牛顿极限下有等式:
+\begin{displaymath}
+\begin{pmatrix}
+R^{1}_{\phantom 0010} &R^{2}_{\phantom 0010} &R^{3}_{\phantom 0010}\\
+R^{1}_{\phantom 0020} &R^{2}_{\phantom 0020} &R^{3}_{\phantom 0020}\\
+R^{1}_{\phantom 0030} &R^{2}_{\phantom 0030} &R^{3}_{\phantom 0030}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{m}{r^{3}} &0 &0\\
+0 &\frac{m}{r^{3}}  &0 \\
+0 &0 &-\frac{2m}{r^{3}} 
+\end{pmatrix}
+\end{displaymath}
+在约定单位下$G$取$6.674\times 10^{-8}cm^{3}g^{-1}s^{-2}$,则有当为约定单位制时:
+\begin{displaymath}
+\frac{GM_{sun}}{r_{sun}^{3}}\simeq 3.96\times 10^{-14}s^{-2}
+\end{displaymath}
+\begin{displaymath}
+\frac{GM_{moon}}{r_{moon}^{3}}\simeq 8.66\times 10^{-14}s^{-2}
+\end{displaymath}
+转换为几何单位制时:
+\begin{displaymath}
+\frac{M_{sun}}{r_{sun}^{3}}\simeq 4.41\times 10^{-35}cm^{-2}
+\end{displaymath}
+\begin{displaymath}
+\frac{M_{moon}}{r_{moon}^{3}}\simeq 9.62\times 10^{-35}cm^{-2}
+\end{displaymath}
+故采用几何单位制中,\\
+%$\tensorkor{R_{sun}}[^1,_0,_1,_0]=\tensorkor{R_{sun} }[^2,_0,_2,_0]=4.41\times 10^{-35}cm^{-2}$\\
+%$\tensorkor{R_{sun}}[^3,_0,_3,_0]=-8.82\times 10^{-35}cm^{-2}$\\
+%$\tensorkor{R_{moon}}[^1,_0,_1,_0]=\tensorkor{R_{moon} }[^2,_0,_2,_0]=9.62\times 10^{-35}cm^{-2}$\\
+%$\tensorkor{R_{moon}}[^3,_0,_3,_0]=-1.92\times 10^{-34}cm^{-2}$\\
+
+而考虑最简单模型,春潮中月亮和太阳同时对潮汐加速度有贡献,而小潮仅仅是由月亮引起的.既有春潮的潮汐加速度是小潮的约1.46倍.
+
+\newpage
+\subsection{被包裹在里面的Kepler}
+一个小卫星绕质量为$m(cm)$的中心物体,在半径为$r$的轨道上,以圆频率$\omega(cm^{-1})$运动.试证明,由已知的$\omega$值,不可能单独确定$r$或$m$的值,而只能得到物体的有效"Kepler密度",即以轨道半径为半径的球体平均密度.给出以Kepler密度表示的$\omega^{2}$的公式.
+
+{\E Solution:}
+
+由Newton第二定律可得:
+\begin{displaymath}
+\frac{Mm}{r^{2}}=m\omega^{2}r
+\end{displaymath}
+又因为由定义
+\begin{displaymath}
+\rho_{\kappa}=\frac{M}{\frac{4}{3}\pi r^{3}}
+\end{displaymath}
+所以得到
+\begin{displaymath}
+\omega^{2}=\frac{4}{3}\pi \rho_{\kappa}
+\end{displaymath}
+
+\chapter{平直空时中的物理学}
+\section{第二章 狭义相对论基础}
+\subsection*{练习2.1}
+试证明式$\quad \boldsymbol{p\cdot v=\langle p\cdot v\rangle}\quad$与de Broglie波的量子力学性质一致
+\begin{displaymath}
+\psi =e^{i\phi}=exp[i(\boldsymbol{k\cdot x}-\omega t)]
+\end{displaymath}
+
+{\E Solution:}
+
+我们已知
+\begin{displaymath}
+\begin{split}
+\boldsymbol{\langle k,v\rangle}&=\phi(P)-\phi(P_{0})\\
+&=\ud \phi
+\end{split}
+\end{displaymath}
+而两边同时乘以$\hbar$
+\begin{displaymath}
+\begin{split}
+\boldsymbol{\langle p,v\rangle}&=\boldsymbol{\langle \hbar k,v\rangle}\\
+&=\hbar \ud \phi
+\end{split}
+\end{displaymath}
+
+de Broglie波的动量期待值的分量为
+\begin{displaymath}
+\begin{split}
+p^{j}=\langle \psi|p^{j}|\psi \rangle&=\int \psi^{*} \frac{\hbar}{i} \frac{\partial \psi}{\partial x_{j}} \,\ud x\\
+&=\hbar k^{j} \int \psi^{*} \psi\,\ud x\\
+&=\hbar k^{j}\\
+\end{split}
+\end{displaymath}
+
+将$\boldsymbol{p}$与任意单位矢量做标积得
+\begin{displaymath}
+\boldsymbol{p\cdot v}=p^{j}=\hbar k^{j}=\hbar \ud \phi
+\end{displaymath}
+
+故可得$\quad \boldsymbol{p\cdot v=\langle p\cdot v\rangle}\quad$
+
+
+\section{电磁场}
+\section{电磁学和微分形式}
+\section{压强-能量张量和守恒律}
+\section{加速的观测者}
+\section{引力与狭义相对论的不相容性}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
